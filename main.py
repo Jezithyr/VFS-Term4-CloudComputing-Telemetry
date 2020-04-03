@@ -36,7 +36,7 @@ def vue_client( path ):
 
     # when testing localy, just use local host
     else:
-        url = 'http:/localhost:3000/{0}'.format( path )
+        url = 'http://localhost:3000/{0}'.format( path )
         return urllib.request.urlopen( url ).read()
 
 
