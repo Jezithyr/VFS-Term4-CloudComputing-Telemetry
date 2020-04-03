@@ -1,0 +1,6 @@
+flask
+jinja2
+googleapis_common_protos
+google-cloud-ndb
+google-cloud-logging
+google-cloud-tasks
