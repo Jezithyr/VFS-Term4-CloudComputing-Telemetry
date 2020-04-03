@@ -14,7 +14,11 @@ import urllib.request
 app = Flask(__name__, template_folder="server/templates") # , 'template folder path')
 app.jinja_loader = jinja2.FileSystemLoader('client/dist')
 
+
+
+
 ###   POST localhost:3000/hello ###
+
 @app.route('/hello')
 def hello():
     return 'Hello World'
@@ -41,11 +45,15 @@ def vue_client( path ):
 
 
 
-"""
-Add additional Flask Routes Here
 
-"""
+### API CALLS ###
 
+# Imports google libarary and creates a client
+from google.cloud import datastore
+datastore_client = datastore.Client()
+
+
+# example edge
 
 @app.route('/api/generic/<param>', methods=['GET','POST'])
 def handler( param ):
@@ -65,6 +73,37 @@ def handler( param ):
 if __name__=='__main__':
     app.run( host='127.0.0.1', port=4000, debug=True )
 
+
+
+### APIS - STORING DATA ###
+
+
+# Sending Telemetry Records to Google
+
+@app.route('/api/store/send', methods=[POST'])
+def sendRecord( param ):
+    
+    # handle the post style of request
+    post_data = request.data  # json object/string posted to this route
+    form_data = request.form['fieldname'] # pulling data from form submissions
+
+    
+    # creates the task to upload
+    task_key = datastore_client.key('testing', 'sample-task') #/ takes in a categorY (testing) and unique id (sample-task)
+    task = datastore.Entity(key=task_key)
+
+    # insert data
+    task['description'] = 'Buy milk'
+
+    # upload
+    datastore_client.put(task)
+
+    print('Saved {}: {}'.format(task.key.name, task['description']))
+
+
+
+if __name__=='__main__':
+    app.run( host='127.0.0.1', port=4000, debug=True )
 
 
 
