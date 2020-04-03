@@ -80,7 +80,7 @@ if __name__=='__main__':
 
 # Sending Telemetry Records to Google
 
-@app.route('/api/store/send', methods=[POST'])
+@app.route('/api/store/send', methods=['POST'])
 def sendRecord( param ):
     
     # handle the post style of request
