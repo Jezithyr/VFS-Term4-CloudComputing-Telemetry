@@ -352,3 +352,4 @@ npm-debug.log
 yarn-error.log
 
 # End of https://www.gitignore.io/api/vue,node,vuejs,flask,django,python,visualstudiocode
+service_account.json
