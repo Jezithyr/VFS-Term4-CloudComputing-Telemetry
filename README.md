@@ -30,7 +30,7 @@
 
 - goto the [google cloud console api credentials screen](https://console.cloud.google.com/apis/credentials) for your project
 - create a new set of **service account** credentials
-  - make sure one of it's roles is **datastore > cloud datastore owner** to give it permissions to use read / write privalages for cloud datastore
+  - make sure one of it's roles is **datastore > cloud datastore owner** to give it permissions to use read / write privileges for cloud datastore
   - you can also make one of its roles **project > owner** for permissions to use all cloud services (not recommended)
 - create an access **key** for this service account
 - this will download a .json file that will give you access to the account (NOTE: you can only download this once)
