@@ -87,6 +87,7 @@ def sendRecord( param ):
     post_data = request.data  # json object/string posted to this route
     form_data = request.form['fieldname'] # pulling data from form submissions
 
+    print('recieved data: {}'.format(request.data))
     
     # creates the task to upload
     task_key = datastore_client.key('testing', 'sample-task') #/ takes in a categorY (testing) and unique id (sample-task)
