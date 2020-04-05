@@ -1,14 +1,16 @@
 
 import Axios from 'axios';
 const axios = Axios.create ({
-    baseUrl: 'https://localhost:4000/api/store'
+    baseURL: 'http://localhost:4000/api/store',
+    timeout: 1000
 })
 
 
 class Datastore {
     
     static async send (data){
-        console.log(`sending data`);
+        console.log(`sending data:`);
+        console.log(data);
         await axios.post("/send", data);
         console.log(`sent data`);
     }
