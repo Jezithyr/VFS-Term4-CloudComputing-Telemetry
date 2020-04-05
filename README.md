@@ -4,8 +4,9 @@
 
 ### Table of Contents
 - [Project Setup](#project-setup)
-  - [Basic](#basic)
-  - [Authenication](#authenication)
+  - [Setup the Client and Server](#setup-the-client-and-server)
+  - [Setup the Cloud](#setup-the-cloud)
+  - [Authenication Between Server and Cloud](#authenication-between-server-and-cloud)
   - [Running Dev Servers](#running-dev-servers)
 - [Resources](#resources)
   - [Setting up the Python Client](#setting-up-the-python-client)
@@ -18,7 +19,7 @@
 > 
 > instructions are for a Windows 10 machine
 
-### Basic
+### Setup the Client and Server
 
 - download the project (either zip or using git url)
 - open up root of project in cmd
@@ -26,7 +27,15 @@
 - run `pip install -r requirement.txt` to install dependancies
 
 
-### Authenication
+### Setup the Cloud
+
+- goto your project's [google cloud datastore page](https://console.cloud.google.com/datastore)
+- select project to use **datastore mode** instead of native move
+- choose a location that's close to you
+  - for North-America wide access, i used US multi-regional `nam5`
+
+
+### Authenication Between Server and Cloud
 
 - goto the [google cloud console api credentials screen](https://console.cloud.google.com/apis/credentials) for your project
 - create a new set of **service account** credentials
@@ -58,3 +67,11 @@
 ### Using the Datastore
 - [python3 API documentation](https://googleapis.dev/python/datastore/latest/client.html)
 - [uploading to datastore *(what are entities, properties & keys?)*](https://cloud.google.com/datastore/docs/concepts/entities)
+
+> **NOTE:** This project uses Google's Datastore. Google [now recommends](https://cloud.google.com/firestore/docs/firestore-or-datastore) to use their Firestore instead, which they describe as *"the next major version of Datastore and a re-branding of the product"*
+>
+> from the linked website, this allows for:
+>   - A new, strongly consistent storage layer
+>   - A collection and document data model
+>   - Real-time updates 
+>   - Mobile and Web client libraries
