@@ -29,7 +29,8 @@
 - download the project (either zip or using git url)
 - open up root of project in cmd
 - run `.\venv\Scripts\activate.bat` to enable python virtual enviroment
-- run `pip install -r requirement.txt` to install dependancies
+- run `pip install -r requirement.txt` to install server dependancies
+- run `cd client` and `npm install` to install client dependancies
 
 
 ### Setup the Cloud
@@ -46,11 +47,12 @@
 - create a new set of **service account** credentials
   - make sure one of it's roles is **datastore > cloud datastore owner** to give it permissions to use read / write privileges for cloud datastore
   - you can also make one of its roles **project > owner** for permissions to use all cloud services (not recommended)
-- create an access **key** for this service account
-- this will download a .json file that will give you access to the account (NOTE: you can only download this once)
+- create an **access key** for this service account (choose JSON option)
+- this will download a .json file that will give you access to the account
+  - NOTE: you can only download this once
 - move that json file to the root of the project (same folder as `main.py`) and rename it to `service_account.json`
   - **be extremely careful not to share this with anyone**
-    - this means don't commit it to your source control
+    - this means don't commit it to source control
 
 
 ### Running Dev Servers
