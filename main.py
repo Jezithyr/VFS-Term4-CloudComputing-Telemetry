@@ -5,7 +5,7 @@ import sys
 print( sys.path )
 #sys.path.insert( 0, os.path.abspath( os.path.dirname(__file__)))
 
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, request
 
 import logging
 import jinja2
@@ -57,6 +57,7 @@ datastore_client = datastore.Client.from_service_account_json("service_account.j
 
 @app.route('/api/generic/<param>', methods=['GET','POST'])
 def handler( param ):
+    
     # request is a global object we can use to pull apart data sent to us
     if request.method == 'GET':
         # handle the get style of the request
@@ -70,9 +71,6 @@ def handler( param ):
     # HTTP headers in/out
     request.headers
 
-if __name__=='__main__':
-    app.run( host='127.0.0.1', port=4000, debug=True )
-
 
 
 ### APIS - STORING DATA ###
@@ -81,11 +79,11 @@ if __name__=='__main__':
 # Sending Telemetry Records to Google
 
 @app.route('/api/store/send', methods=['POST'])
-def sendRecord( param ):
-    
+def sendRecord( ):
+
     # handle the post style of request
     post_data = request.data  # json object/string posted to this route
-    form_data = request.form['fieldname'] # pulling data from form submissions
+    form_data = request.form
 
     print('recieved data: {}'.format(request.data))
     
@@ -102,6 +100,14 @@ def sendRecord( param ):
     print('Saved {}: {}'.format(task.key.name, task['description']))
 
 
+
+
+
+
+
+
+
+### RUNNING DEV SERVER ###
 
 if __name__=='__main__':
     app.run( host='127.0.0.1', port=4000, debug=True )
