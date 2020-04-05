@@ -50,7 +50,7 @@ def vue_client( path ):
 
 # Imports google libarary and creates a client
 from google.cloud import datastore
-datastore_client = datastore.Client()
+datastore_client = datastore.Client.from_service_account_json("service_account.json")
 
 
 # example edge
