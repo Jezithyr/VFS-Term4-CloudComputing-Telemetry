@@ -4,6 +4,9 @@
 > a simple telemetry app using a Vue Client, Python Flask Server and Google's Cloud Datastore.
 
 ### Table of Contents
+- [Result](#result)
+  - [Viewing Records](#viewing-records)
+  - [Uploading Records](#uploading-records)
 - [Project Setup](#project-setup)
   - [Setup the Client and Server](#setup-the-client-and-server)
   - [Setup the Cloud](#setup-the-cloud)
@@ -18,6 +21,14 @@
 - vue client talks with the server
 - the server talks with google datastore
 
+
+## Result
+
+### Viewing Records
+![Image of UI when Viewing Telemetry Records](result_view.png)
+
+### Uploading Records
+![Image of UI when Uploading Telemetry Records](result_upload.png)
 
 ## Project Setup
 
