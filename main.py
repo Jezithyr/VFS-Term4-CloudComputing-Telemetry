@@ -81,6 +81,22 @@ def handler( param ):
 ### APIS - STORING DATA ###
 
 
+
+@app.route('/api/store/get', methods=['POST'])
+def getRecordList ():
+    
+    # creates the query filter
+    query = datastore_client.query(kind="testing") #/ here we can add large queries // https://googleapis.dev/python/datastore/latest/queries.html#google.cloud.datastore.query.Query
+    # query.add_filter('property', '=', 'val')
+
+    # TODO: our api should be pagenated, not returning full lists
+    # loops through all items
+    query_iter = query.fetch()
+    for entity in query_iter:
+        print(entity)
+
+
+
 # Sending Telemetry Records to Google
 
 @app.route('/api/store/send', methods=['POST'])
