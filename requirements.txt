@@ -1,4 +1,5 @@
 flask
+flask_cors
 jinja2
 googleapis_common_protos
 google-cloud-ndb

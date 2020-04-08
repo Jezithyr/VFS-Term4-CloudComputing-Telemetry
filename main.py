@@ -15,6 +15,11 @@ app = Flask(__name__, template_folder="server/templates") # , 'template folder p
 app.jinja_loader = jinja2.FileSystemLoader('client/dist')
 
 
+# sets up CORS
+
+from flask_cors import CORS, cross_origin
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 ###   POST localhost:3000/hello ###

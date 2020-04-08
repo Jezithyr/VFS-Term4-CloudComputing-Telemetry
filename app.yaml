@@ -1,0 +1,30 @@
+runtime: python37
+
+# The following values are available depending on your service's scaling: F1, F2, F4, F4_1G
+# Default F1
+instance_class: F1
+
+# maybe add some env variables
+# env_variables:
+#   BUCKET_NAME: "example-gcs-bucket"
+
+handlers:
+# Matches requests ... to client/dist/...
+- url: /images
+  # static_files: static/images\1 - idk what is this
+  static_dir: client/dist/img(.*\.(gif|png|jpg))
+
+- url: /css
+  mime_type: text/css
+  static_dir: client/dist/css
+
+- url: /scripts
+  mime_type: text/javascript
+  static_dir: client/dist/js
+
+- url: /(.*\.html)
+  mime_type: text/html
+  static_files: client/dist/(.*\.html)
+
+- url: .*
+  script: main.app     
