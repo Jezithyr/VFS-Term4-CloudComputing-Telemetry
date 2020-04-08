@@ -13,9 +13,10 @@ export default {
   methods: {
     upload: () => {
       Datastore.send({
-        "date": moment().utc().toISOString(),
-        "user": "Sabastian",
-        "asdasd": "Hey"
+        date: moment().utc().toISOString(),
+        sessionId: "001",
+        user: "Sabastian"
+
       });
     }
   }

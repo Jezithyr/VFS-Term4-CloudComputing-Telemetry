@@ -86,9 +86,9 @@ def handler( param ):
 @app.route('/api/store/send', methods=['POST'])
 def sendRecord():
 
-    # creates the task to upload
-    task_key = datastore_client.key('testing', 'sample-task') #/ takes in a categorY (testing) and unique id (sample-task)
-    task = datastore.Entity(key=task_key)
+    # creates the task to upload (in category "testing")
+    task_key = datastore_client.key('testing') #/ creates partial key, they generate id
+    task = datastore.Entity(key=task_key) #/ creates the entity where we store data
 
     # inserts data to task from input
     for key, value in request.get_json().items():
