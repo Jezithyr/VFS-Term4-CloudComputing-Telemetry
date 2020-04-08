@@ -1,7 +1,10 @@
 <template>
   <div>
-    <h1>Create a manual record to upload</h1>
-    <button @click="upload">Upload</button>
+    <form>
+      <input v-model="sessionId" type="text" placeholder="Session Id">
+      <input v-model="userName" type="text" placeholder="Username">
+      <button @click="upload">Upload</button>
+    </form>
   </div>
 </template>
 
@@ -10,15 +13,35 @@ import Datastore from "@/lib/Datastore.js";
 import moment from "moment";
 
 export default {
+  data: () => ({
+    sessionId: "",
+    userName: "",
+  }),
   methods: {
-    upload: () => {
+    upload: function (){
       Datastore.send({
         date: moment().utc().toISOString(),
-        sessionId: "001",
-        user: "Sabastian"
-
+        sessionId: this.sessionId,
+        user: this.userName
       });
     }
   }
 };
 </script>
+
+<style scoped>
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  padding: 4px;
+}
+
+form > * {
+  margin: 8px;
+}
+
+
+</style>
