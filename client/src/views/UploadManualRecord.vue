@@ -12,7 +12,9 @@ export default {
   methods: {
     upload: () => {
       Datastore.send({
-        'hey': "how's it going"
+        "date": "2001-13-10",
+        "user": "Sabastian",
+        "asdasd": "Hey"
       });
     }
   }
