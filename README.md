@@ -73,7 +73,7 @@
   - basically, google recommends to use service accounts over api keys in most cases
 
 ### Using the Datastore
-- [python3 API documentation](https://googleapis.dev/python/datastore/latest/client.html)
+- [google cloud python3 API documentation](https://googleapis.dev/python/datastore/latest/client.html)
 - [uploading to datastore *(what are entities, properties & keys?)*](https://cloud.google.com/datastore/docs/concepts/entities)
 
 > **NOTE:** This project uses Google's Datastore. Google [now recommends](https://cloud.google.com/firestore/docs/firestore-or-datastore) to use their Firestore instead, which they describe as *"the next major version of Datastore and a re-branding of the product"*
