@@ -5,7 +5,7 @@ import sys
 print( sys.path )
 #sys.path.insert( 0, os.path.abspath( os.path.dirname(__file__)))
 
-from flask import Flask, render_template, make_response, request
+from flask import Flask, render_template, make_response, request, jsonify
 
 import logging
 import jinja2
@@ -86,23 +86,21 @@ def handler( param ):
 @app.route('/api/store/send', methods=['POST'])
 def sendRecord():
 
-    # handle the post style of request
-    post_data = request.data  # json object/string posted to this route
-
-    print('recieved data: {}'.format(request.data))
-    
     # creates the task to upload
     task_key = datastore_client.key('testing', 'sample-task') #/ takes in a categorY (testing) and unique id (sample-task)
     task = datastore.Entity(key=task_key)
 
     # inserts data to task from input
-    for attr, value in request.form.items():
-        task[attr] = value
+    for key, value in request.get_json().items():
+        task[key] = value
 
     # upload
     datastore_client.put(task)
 
-    print('Saved {}: {}'.format(task.key.name, task['description']))
+    print(task)
+
+    # if everything ran with no problem, return sucess
+    return jsonify(sucess=True)
 
 
 
