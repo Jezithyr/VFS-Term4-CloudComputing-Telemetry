@@ -7,12 +7,13 @@
 
 <script>
 import Datastore from "@/lib/Datastore.js";
+import moment from "moment";
 
 export default {
   methods: {
     upload: () => {
       Datastore.send({
-        "date": "2001-13-10",
+        "date": moment().utc().toISOString(),
         "user": "Sabastian",
         "asdasd": "Hey"
       });
