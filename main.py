@@ -84,11 +84,10 @@ def handler( param ):
 # Sending Telemetry Records to Google
 
 @app.route('/api/store/send', methods=['POST'])
-def sendRecord( ):
+def sendRecord():
 
     # handle the post style of request
     post_data = request.data  # json object/string posted to this route
-    form_data = request.form
 
     print('recieved data: {}'.format(request.data))
     
@@ -96,8 +95,9 @@ def sendRecord( ):
     task_key = datastore_client.key('testing', 'sample-task') #/ takes in a categorY (testing) and unique id (sample-task)
     task = datastore.Entity(key=task_key)
 
-    # insert data
-    task['description'] = 'Buy milk'
+    # inserts data to task from input
+    for attr, value in request.form.items():
+        task[attr] = value
 
     # upload
     datastore_client.put(task)
