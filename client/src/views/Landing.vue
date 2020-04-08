@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     hey
     <button @click="download">update list</button>
     <table>
@@ -36,6 +36,9 @@ export default {
       let response = await Datastore.get();
       this.entityList = response.data.entityList;
     }
+  },
+  beforeMount: function(){
+    this.download();
   }
 };
 </script>
