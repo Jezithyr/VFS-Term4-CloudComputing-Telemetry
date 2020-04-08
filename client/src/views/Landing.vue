@@ -1,7 +1,6 @@
 <template>
   <div>
-    hey
-    <button @click="download">update list</button>
+    <button @click="download">refresh list</button>
     <table>
       <thead>
         <th>Date</th>
@@ -31,6 +30,10 @@ export default {
   }),
   methods: {
     download: async function (){ // NOTE: the function keyword needs to be here to access the entity lsit
+
+      this.entityList = [{
+        date: "loading...",
+      }]
 
       // gets the entity list and stores it in vue variable
       let response = await Datastore.get();
