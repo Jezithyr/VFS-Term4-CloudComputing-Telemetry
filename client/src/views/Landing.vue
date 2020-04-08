@@ -2,9 +2,20 @@
   <div class="home">
     hey
     <button @click="download">update list</button>
-    <div>
-      {{ entityList }}
-    </div>
+    <table>
+      <thead>
+        <th>Date</th>
+        <th>Session Id</th>
+        <th>Username</th>
+      </thead>
+      <tbody>
+        <tr v-for="(entity, index) in entityList" :key="index">
+          <td>{{ entity.date }}</td>
+          <td>{{ entity.sessionId }}</td>
+          <td>{{ entity.user }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -28,3 +39,21 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+
+table {
+
+  margin: 16px;
+
+  /* Centers table */
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+td {
+  padding: 12px;
+}
+
+</style>
