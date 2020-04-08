@@ -1,11 +1,7 @@
-> **NOTE:** this is incomplete for assignment 1. spent a lot of time trying to get this working but now deciding to move to other assignments for now. i got as far as:
-> - the vue client is served through the python flask server. 
-> - vue client talks with the server
-> - the server tries to talk with google datastore, which denies access due to authentication issue (maybe only on my machine? looks like a niche issue). 
 
 # Telemetry App <!-- omit in toc -->
 
-> a simple telemetry app using a Vue Client, Python Flask Server and Google's Cloud Datastore
+> a simple telemetry app using a Vue Client, Python Flask Server and Google's Cloud Datastore.
 
 ### Table of Contents
 - [Project Setup](#project-setup)
@@ -16,6 +12,11 @@
 - [Resources](#resources)
   - [Setting up the Python Client](#setting-up-the-python-client)
   - [Using the Datastore](#using-the-datastore)
+
+### Project Description
+- a vue client is served through a python flask server
+- vue client talks with the server
+- the server talks with google datastore
 
 
 ## Project Setup
