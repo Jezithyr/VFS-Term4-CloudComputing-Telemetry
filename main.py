@@ -90,10 +90,17 @@ def getRecordList ():
     # query.add_filter('property', '=', 'val')
 
     # TODO: our api should be pagenated, not returning full lists
-    # loops through all items
+    # loops through all items and adds them to a list
+    entityList = []
     query_iter = query.fetch()
     for entity in query_iter:
-        print(entity)
+        entityList.append(entity)
+    
+    # returns the list
+    return jsonify(
+        success=True,
+        entityList=entityList
+    )
 
 
 
@@ -116,7 +123,7 @@ def sendRecord():
     print(task)
 
     # if everything ran with no problem, return sucess
-    return jsonify(sucess=True)
+    return jsonify(success=True)
 
 
 
