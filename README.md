@@ -70,7 +70,7 @@
 ### Running Dev Servers
 
 - inside the `client` folder run `npm run serve` to start the Vue client
-- from the root folder, run `python3 main.py` to start the python server
+- from the root folder, run `py main.py` or `python3 main.py` to start the python server
 - access the app at [`localhost:4000`](http://localhost:4000/)
 
 ## Resources
