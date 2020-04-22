@@ -106,24 +106,13 @@ def getRecordList ():
 
 # Sending Telemetry Records to Google
 
-@app.route('/api/store/send', methods=['POST'])
-def sendRecord():
+@app.route('/api/singe/<app_id>/<session_id>', methods = ['GET', 'POST'])
+@cross_origin()
+def do_single ( app_id, session_id ):
+    resp = make_response({ 'error':-1 })
 
-    # creates the task to upload (in category "testing")
-    task_key = datastore_client.key('testing') #/ creates partial key, they generate id
-    task = datastore.Entity(key=task_key) #/ creates the entity where we store data
-
-    # inserts data to task from input
-    for key, value in request.get_json().items():
-        task[key] = value
-
-    # upload
-    datastore_client.put(task)
-
-    print(task)
-
-    # if everything ran with no problem, return sucess
-    return jsonify(success=True)
+    if request.method == 'GET':
+        #update this to pull the key from the request and then
 
 
 
