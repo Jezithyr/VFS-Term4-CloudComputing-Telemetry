@@ -12,6 +12,7 @@
 <script>
 
 import CustomGraph from './CustomGraph.vue'
+import { mapState } from 'vuex'
 
 
 export default {
@@ -24,27 +25,31 @@ export default {
         CustomGraph
     },
 
-    methods: {
-        generateData() {
-        }
-    },
-
     computed: {
+
+        ...mapState("telemetry", {
+            entityList: state => state.entityList
+        }),
+
         graphData: function(){
             let xData = [];
             let yData = [];
             let data = [];
-            let width = 10;
-            let height = 10;
+            let width = 20;
+            let height = 20;
             for (var i = 0; i <= width; i++) {
-                for (var j = 0; j <= height; j++) {
-                    data.push([i, j, Math.sin(i)/width*2 + 0.3 + j/height/2]);
-                }
                 xData.push(i);
             }
             for (var j = 0; j < height; j++) {
                 yData.push(j);
             }
+            for(let entity of this.entityList){
+                console.log(entity);
+                data.push([entity.x, entity.y, entity.value]);
+            }
+
+            let min = Math.min(...this.entityList.map(x => x.value));
+            let max = Math.max(...this.entityList.map(x => x.value));
 
             return {
                 tooltip: {},
@@ -58,7 +63,7 @@ export default {
                 },
                 visualMap: {
                     min: 0,
-                    max: 1,
+                    max: 9,
                     calculable: true,
                     realtime: false,
                     inRange: {
@@ -66,7 +71,6 @@ export default {
                     }
                 },
                 series: [{
-                    name: 'Gaussian',
                     type: 'heatmap',
                     data: data,
                     emphasis: {
