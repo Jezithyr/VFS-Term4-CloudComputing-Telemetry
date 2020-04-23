@@ -6,8 +6,10 @@
 
 <template>
     <div>
-
-        <table>
+        <div v-if="isFetchingData == true">
+            loading...
+        </div>
+        <table v-else>
             <thead>
                 <th>Date</th>
                 <th>Session Id</th>
@@ -34,10 +36,18 @@
 
 <script>
 
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapActions } = createNamespacedHelpers('telemetry')
+
 export default {
     props: {
         entityList: Array
-    }
+    },
+    computed: {
+        ...mapState([
+            "isFetchingData"
+        ])
+    },
 }
 
 </script>
