@@ -1,8 +1,6 @@
 <template>
     <div>
         
-        <StoreTest/>
-        
         <div id="graph-container">
             <SomeLineGraph />
             <SomeHeatmapGraph />
