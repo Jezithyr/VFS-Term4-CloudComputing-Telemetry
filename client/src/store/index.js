@@ -10,6 +10,7 @@ import Vuex from 'vuex'
 
 // Import Vuex Modules
 
+import echarts from "./modules/echarts.js"
 import telemetry from './modules/telemetry.js';
 
 
@@ -22,7 +23,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        telemetry
+        telemetry,
+        echarts
     },
     strict: debug
 })
