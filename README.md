@@ -25,7 +25,9 @@
 ## Result
 
 ### Viewing Records
-![Image of UI when Viewing Telemetry Records](result_view.png)
+![Image of UI when Viewing Telemetry Records as Graphs](result_graphs.png)
+
+![Image of UI when Viewing Telemetry Records as Table](result_view.png)
 
 ### Uploading Records
 ![Image of UI when Uploading Telemetry Records](result_upload.png)
