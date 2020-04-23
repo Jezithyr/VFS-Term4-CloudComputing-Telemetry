@@ -3,9 +3,11 @@
         
         <StoreTest/>
         
-        <SomeLineGraph />
-        <SomeBarGraph />
-        <SomePieGraph />
+        <div id="graph-container">
+            <SomeLineGraph />
+            <SomeBarGraph />
+            <SomePieGraph />
+        </div>
 
         <button @click="fetchEntityList">refresh list</button>
         <RecordTable :entityList="this.entityList" />
@@ -55,3 +57,20 @@ export default {
     
 };
 </script>
+
+
+
+<style scoped>
+
+#graph-container {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 100%;
+}
+
+#graph-container > * {
+    width: 300px;
+    height: 200px;
+}
+
+</style>
