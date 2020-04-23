@@ -7,6 +7,7 @@
             <SomeLineGraph />
             <SomeBarGraph />
             <SomePieGraph />
+            <SomeHeatmapGraph />
         </div>
 
         <button @click="fetchEntityList">refresh list</button>
@@ -24,6 +25,7 @@ import RecordTable from "@/components/DataVis/RecordTable.vue"
 import SomeLineGraph from "@/components/DataVis/SomeLineGraph.vue"
 import SomeBarGraph from "@/components/DataVis/SomeBarGraph.vue"
 import SomePieGraph from "@/components/DataVis/SomePieGraph.vue"
+import SomeHeatmapGraph from "@/components/DataVis/SomeHeatmapGraph.vue"
 
 // Libs
 import { createNamespacedHelpers } from 'vuex'
@@ -37,7 +39,8 @@ export default {
         RecordTable,
         SomeLineGraph,
         SomeBarGraph,
-        SomePieGraph
+        SomePieGraph,
+        SomeHeatmapGraph
     },
      
     methods: {
