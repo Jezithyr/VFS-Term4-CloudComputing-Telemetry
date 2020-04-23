@@ -16,7 +16,7 @@
                 </th>
             </thead>
             <tbody>
-                <tr v-for="(entity, index) in entityList" :key="index">
+                <tr v-for="(entity, index) in filteredEntityList" :key="index">
                     <td v-for="(format, key, j) in entityFormat" :key="j">
                         {{ entity[key] }}
                     </td>
@@ -41,7 +41,16 @@ export default {
         ...mapState([
             "isFetchingData",
             "entityFormat"
-        ])
+        ]),
+        filteredEntityList: function (){
+            
+            // makes a copy of the list and sorts it
+            return [...this.entityList].sort((a, b) => {
+                if(a.date < b.date) return 1;
+                if(b.date < a.date) return -1;
+                return 0
+            })
+        }
     },
 }
 
