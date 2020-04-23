@@ -12,6 +12,9 @@
 </template>
 
 <script>
+
+// TODO: move this code to Vuex, it will work without it, but it's important to be consistant
+
 import Datastore from "@/lib/Datastore.js";
 import moment from "moment";
 
