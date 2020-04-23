@@ -3,10 +3,7 @@
 -->
 
 <template>
-    <v-chart 
-        :theme="theme"
-        :autoresize="true"
-        :options="graphData"/>
+    <CustomGraph :graphData="graphData"/>
 </template>
 
 
@@ -14,15 +11,13 @@
 
 <script>
 
-import { mapState } from 'vuex'
-import ECharts from 'vue-echarts'
+import CustomGraph from './CustomGraph.vue'
+
 
 export default {
     
-    name: "LineGraphExample",
-
     components: {
-        'v-chart': ECharts
+        CustomGraph
     },
 
     data: () => ({
@@ -40,22 +35,6 @@ export default {
             }]
         }
     }),
-
-    computed: {
-        ...mapState("echarts", {
-            theme: state => state.theme
-        })
-    },
 }
 
 </script>
-
-
-
-
-<style scoped>
-.echarts {
-    width: 100%;
-    height: 100%;
-}
-</style>
