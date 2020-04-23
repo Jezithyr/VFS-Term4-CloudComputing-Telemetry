@@ -22,6 +22,10 @@ export default {
 
     data: () => ({
         graphData: {
+            title: {
+                text: "user list breakdown",
+                left: 'center'
+            },
             series: [{
                 data: [
                     { value: 820, name: "a" },

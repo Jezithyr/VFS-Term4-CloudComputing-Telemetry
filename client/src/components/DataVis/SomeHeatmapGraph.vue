@@ -53,7 +53,8 @@ export default {
 
             return {
                 title: {
-                    text: "value at position (x,y)"
+                    text: "value at position (x,y)",
+                    left: 'center'
                 },
                 grid: {
                     right: 0,

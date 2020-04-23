@@ -22,6 +22,10 @@ export default {
 
     data: () => ({
         graphData: {
+            title: {
+                text: "events logged per minute",
+                left: 'center'
+            },
             xAxis: {
                 type: 'category',
                 data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']

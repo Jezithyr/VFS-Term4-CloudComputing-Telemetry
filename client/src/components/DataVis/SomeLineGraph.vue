@@ -22,6 +22,10 @@ export default {
 
     data: () => ({
         graphData: {
+            title: {
+                text: "value over time",
+                left: 'center'
+            },
             xAxis: {
                 type: 'category',
                 data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
