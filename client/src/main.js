@@ -30,6 +30,7 @@ import 'echarts/lib/chart/heatmap'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/visualMap'
 import 'echarts/lib/component/legend'
+import 'echarts/lib/component/title'
 import 'echarts/lib/component/toolbox'
 
 Vue.component('v-chart', ECharts)

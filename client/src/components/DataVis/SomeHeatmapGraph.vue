@@ -52,6 +52,13 @@ export default {
             let max = Math.max(...this.entityList.map(x => x.value));
 
             return {
+                title: {
+                    text: "value at position (x,y)"
+                },
+                grid: {
+                    right: 0,
+                    left: 80
+                },
                 tooltip: {},
                 xAxis: {
                     type: 'category',

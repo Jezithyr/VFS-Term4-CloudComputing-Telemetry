@@ -30,7 +30,7 @@
 #app-container {
     width: 100%;
     min-width: 200px;
-    max-width: 600px;
+    max-width: 800px;
 
     display: flex;
     flex-flow: column nowrap;

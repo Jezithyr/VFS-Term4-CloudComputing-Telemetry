@@ -72,8 +72,8 @@ export default {
 }
 
 #graph-container > * {
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
 }
 
 </style>
