@@ -12,6 +12,14 @@ import Datastore from "@/lib/Datastore.js";
 const state = {
     isFetchingData: false,
     entityList: [],
+    entityFormat: {
+        date: { displayName: "Date" },
+        sessionId: { displayName: "Session Id" },
+        user: { displayName: "User" },
+        y: { displayName: "Position X" },
+        x: { displayName: "Position Y" },
+        value: { displayName: "Value" },
+    }
 }
 
 

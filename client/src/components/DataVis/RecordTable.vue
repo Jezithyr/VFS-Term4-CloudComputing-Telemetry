@@ -11,21 +11,15 @@
         </div>
         <table v-else>
             <thead>
-                <th>Date</th>
-                <th>Session Id</th>
-                <th>Username</th>
-                <th>Position X</th>
-                <th>Position Y</th>
-                <th>Value</th>
+                <th v-for="(format, key, j) in entityFormat" :key="j">
+                    {{ format.displayName }}
+                </th>
             </thead>
             <tbody>
                 <tr v-for="(entity, index) in entityList" :key="index">
-                    <td>{{ entity.date }}</td>
-                    <td>{{ entity.sessionId }}</td>
-                    <td>{{ entity.user }}</td>
-                    <td>{{ entity.x }}</td>
-                    <td>{{ entity.y }}</td>
-                    <td>{{ entity.value }}</td>
+                    <td v-for="(format, key, j) in entityFormat" :key="j">
+                        {{ entity[key] }}
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -45,7 +39,8 @@ export default {
     },
     computed: {
         ...mapState([
-            "isFetchingData"
+            "isFetchingData",
+            "entityFormat"
         ])
     },
 }
