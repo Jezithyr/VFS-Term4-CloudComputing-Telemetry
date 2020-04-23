@@ -16,7 +16,8 @@
 
 <script>
 
-import { mapState } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapActions } = createNamespacedHelpers('telemetry')
 
 export default {
     computed: {
