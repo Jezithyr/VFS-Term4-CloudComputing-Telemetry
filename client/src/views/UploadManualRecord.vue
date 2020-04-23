@@ -1,43 +1,63 @@
 <template>
-  <div>
-    <form>
-      Session Id <input v-model="sessionId" type="text" placeholder="Session Id">
-      Username <input v-model="userName" type="text" placeholder="Username">
-      Position X <input v-model="xPos" type="text" placeholder="Position X">
-      Position Y <input v-model="yPos" type="text" placeholder="Position Y">
-      Value <input v-model="value" type="text" placeholder="Value">
-      <button @click="upload">Upload</button>
-    </form>
-  </div>
+    <div>
+        <form>
+            <div class="input-container" v-for="(format, key, j) in fieldList" :key="j">
+                <div class="input-label"> {{ format.displayName }} </div>
+                <input :v-model="key" type="text" :placeholder="format.displayName" />
+            </div>
+
+            <button @click="upload">Upload</button>
+        </form>
+    </div>
 </template>
 
 <script>
 
-// TODO: move this code to Vuex, it will work without it, but it's important to be consistant
+
+
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapActions } = createNamespacedHelpers('telemetry')
+
+
 
 import Datastore from "@/lib/Datastore.js";
 import moment from "moment";
 
 export default {
-  data: () => ({
-    sessionId: "",
-    userName: "",
-    xPos: 0,
-    yPos: 0,
-    value: 0
-  }),
-  methods: {
-    upload: function (){
-      Datastore.send({
-        date: moment().utc().toISOString(),
-        sessionId: this.sessionId,
-        user: this.userName,
-        x: this.xPos,
-        y: this.yPos,
-        value: this.value
-      });
-    }
-  }
+    
+    data: () => ({
+        sessionId: "",
+        userName: "",
+        x: 0,
+        y: 0,
+        value: 0
+    }),
+
+    // TODO: move this code to Vuex, it will work without it, but it's important to be consistant (plus will save me time later)
+    methods: {
+        upload: function() {
+            Datastore.send({
+                date: moment().utc().toISOString(),
+                sessionId: this.sessionId,
+                user: this.userName,
+                x: this.x,
+                y: this.y,
+                value: this.value
+            });
+        }
+    },
+
+    computed: {
+        ...mapState([
+            "entityFormat"
+        ]),
+        fieldList: function() {
+            let fieldList = {...this.entityFormat}; /// make a copy of the object
+            delete fieldList.date; /// we don't want user to add the date (only removes the reference)
+            return fieldList;
+        }
+    },
+
 };
 </script>
 
@@ -50,10 +70,19 @@ form {
 
   padding: 4px;
 }
-
 form > * {
   margin: 8px;
 }
 
+.input-container {
+    display: flex;
+    flex-flow: row;
+}
+
+.input-label {
+    width: 100px;
+    overflow: hidden;
+    text-align: left;
+}
 
 </style>
