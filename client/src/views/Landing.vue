@@ -3,6 +3,10 @@
         
         <StoreTest/>
         
+        <SomeLineGraph />
+        <SomeBarGraph />
+        <SomePieGraph />
+
         <button @click="fetchEntityList">refresh list</button>
         <RecordTable :entityList="this.entityList" />
     </div>
@@ -15,6 +19,9 @@
 // Components
 import StoreTest from "@/components/StoreTest.vue"
 import RecordTable from "@/components/DataVis/RecordTable.vue"
+import SomeLineGraph from "@/components/DataVis/SomeLineGraph.vue"
+import SomeBarGraph from "@/components/DataVis/SomeBarGraph.vue"
+import SomePieGraph from "@/components/DataVis/SomePieGraph.vue"
 
 // Libs
 import { createNamespacedHelpers } from 'vuex'
@@ -25,7 +32,10 @@ export default {
 
     components: {
         StoreTest,
-        RecordTable
+        RecordTable,
+        SomeLineGraph,
+        SomeBarGraph,
+        SomePieGraph
     },
      
     methods: {
