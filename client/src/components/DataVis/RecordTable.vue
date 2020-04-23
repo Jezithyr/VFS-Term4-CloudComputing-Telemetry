@@ -5,7 +5,7 @@
 -->
 
 <template>
-    <div>
+    <div class="parent">
         <div v-if="isFetchingData == true">
             loading...
         </div>
@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
 
-table {
+.parent {
 
   margin: 16px;
 
