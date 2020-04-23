@@ -14,13 +14,13 @@
 
 <script>
 
+import { mapState } from 'vuex'
 import ECharts from 'vue-echarts'
-
 
 export default {
     
     name: "LineGraphExample",
-    props: ["theme"],
+
     components: {
         'v-chart': ECharts
     },
@@ -39,7 +39,13 @@ export default {
                 type: 'line'
             }]
         }
-    })
+    }),
+
+    computed: {
+        ...mapState("echarts", {
+            theme: state => state.theme
+        })
+    },
 }
 
 </script>
