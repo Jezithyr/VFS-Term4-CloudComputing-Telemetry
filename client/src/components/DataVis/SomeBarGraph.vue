@@ -12,6 +12,7 @@
 <script>
 
 import CustomGraph from './CustomGraph.vue'
+import { mapState } from 'vuex'
 
 
 export default {
@@ -20,25 +21,51 @@ export default {
         CustomGraph
     },
 
-    data: () => ({
-        graphData: {
-            title: {
-                text: "events logged per minute",
-                left: 'center'
-            },
-            xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'bar'
-            }]
+    computed: {
+        ...mapState("telemetry", {
+            entityList: state => state.entityList
+        }),
+
+        graphData: function (){
+
+            
+            // calculates the total points per player
+            let userListData = {};
+            for(let entity of this.entityList){
+                if(userListData[entity.user] == undefined) userListData[entity.user] = 0;
+                userListData[entity.user] = Number(userListData[entity.user]) + Number(entity.value);
+            }
+
+            // moves that data into a form echarts can read
+            let data = [];
+            let axisLabels = [];
+            for(let user in userListData){
+                data.push(userListData[user])
+                axisLabels.push(user);
+            }
+
+            // creates the chart obj
+            return {
+                title: {
+                    text: "value per user",
+                    left: 'center'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: axisLabels
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: data,
+                    type: 'bar'
+                }]
+            }
         }
-    }),
+    }
+
+    
 }
 
 </script>
