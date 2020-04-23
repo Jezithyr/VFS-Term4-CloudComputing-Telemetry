@@ -35,12 +35,14 @@ export default {
             let xData = [];
             let yData = [];
             let data = [];
-            let width = 20;
-            let height = 20;
-            for (var i = 0; i <= width; i++) {
+            let startX = Math.min(...this.entityList.map(x => x.x));
+            let startY = Math.min(...this.entityList.map(x => x.y));
+            let endX = Math.max(...this.entityList.map(x => x.x));
+            let endY = Math.max(...this.entityList.map(x => x.y));
+            for (var i = startX; i < endX+1; i++) {
                 xData.push(i);
             }
-            for (var j = 0; j < height; j++) {
+            for (var j = startY; j < endY+1; j++) {
                 yData.push(j);
             }
             for(let entity of this.entityList){
