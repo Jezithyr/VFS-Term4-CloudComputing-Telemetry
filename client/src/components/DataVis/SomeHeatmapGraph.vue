@@ -46,7 +46,6 @@ export default {
                 yData.push(j);
             }
             for(let entity of this.entityList){
-                console.log(entity);
                 data.push([entity.x, entity.y, entity.value]);
             }
 
