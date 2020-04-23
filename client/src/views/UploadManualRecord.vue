@@ -3,7 +3,7 @@
         <form>
             <div class="input-container" v-for="(format, key, j) in fieldList" :key="j">
                 <div class="input-label"> {{ format.displayName }} </div>
-                <input :v-model="key" type="text" :placeholder="format.displayName" />
+                <input v-model="formData[key]" type="text" :placeholder="format.displayName" />
             </div>
 
             <button @click="upload">Upload</button>
@@ -26,24 +26,14 @@ import moment from "moment";
 export default {
     
     data: () => ({
-        sessionId: "",
-        userName: "",
-        x: 0,
-        y: 0,
-        value: 0
+        formData: { } /// generated in beforeMount
     }),
 
     // TODO: move this code to Vuex, it will work without it, but it's important to be consistant (plus will save me time later)
     methods: {
         upload: function() {
-            Datastore.send({
-                date: moment().utc().toISOString(),
-                sessionId: this.sessionId,
-                user: this.userName,
-                x: this.x,
-                y: this.y,
-                value: this.value
-            });
+            this.formData.date = moment().utc().toISOString();
+            Datastore.send(this.formData);
         }
     },
 
@@ -57,6 +47,14 @@ export default {
             return fieldList;
         }
     },
+
+    // generates empty form data (later to be bound)
+    beforeMount: function (){
+        for(let prop in this.fieldList)
+        {
+            this.formData[prop] = "";
+        }
+    }
 
 };
 </script>
