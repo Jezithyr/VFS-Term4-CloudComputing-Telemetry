@@ -63,12 +63,11 @@ export default {
 <style scoped>
 
 .parent {
-
   margin: 16px;
+}
 
-  /* Centers table */
-  margin-left:auto; 
-  margin-right:auto;
+table {
+  width: 100%;
 }
 
 td {
