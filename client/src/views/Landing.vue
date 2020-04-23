@@ -1,5 +1,6 @@
 <template>
   <div>
+    <StoreTest/>
     <button @click="download">refresh list</button>
     <table>
       <thead>
@@ -29,11 +30,18 @@
 <script>
 import Datastore from "@/lib/Datastore.js";
 import moment from "moment";
+import StoreTest from "@/components/StoreTest.vue"
 
 export default {
+
+  components: {
+    StoreTest
+  },
+
   data: () => ({
     entityList: []
   }),
+
   methods: {
     download: async function (){ // NOTE: the function keyword needs to be here to access the entity lsit
 
@@ -46,6 +54,7 @@ export default {
       this.entityList = response.data.entityList;
     }
   },
+
   beforeMount: function(){
     this.download();
   }
