@@ -5,9 +5,9 @@
         
         <div id="graph-container">
             <SomeLineGraph />
+            <SomeHeatmapGraph />
             <SomeBarGraph />
             <SomePieGraph />
-            <SomeHeatmapGraph />
         </div>
 
         <button @click="fetchEntityList">refresh list</button>
