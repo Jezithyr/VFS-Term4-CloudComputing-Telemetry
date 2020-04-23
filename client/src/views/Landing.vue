@@ -3,7 +3,7 @@
         
         <StoreTest/>
         
-        <button @click="download">refresh list</button>
+        <button @click="fetchEntityList">refresh list</button>
         <RecordTable :entityList="this.entityList" />
     </div>
 </template>
@@ -17,7 +17,8 @@ import StoreTest from "@/components/StoreTest.vue"
 import RecordTable from "@/components/DataVis/RecordTable.vue"
 
 // Libs
-import Datastore from "@/lib/Datastore.js";
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapActions } = createNamespacedHelpers('telemetry')
 
 
 export default {
@@ -26,26 +27,20 @@ export default {
         StoreTest,
         RecordTable
     },
-    
-    data: () => ({
-        entityList: []
-    }),
-
+     
     methods: {
-        download: async function (){ // NOTE: the function keyword needs to be here to access the entity lsit
-
-            this.entityList = [{
-                date: "loading...",
-            }]
-
-            // gets the entity list and stores it in vue variable
-            let response = await Datastore.get();
-            this.entityList = response.data.entityList;
-        }
+        ...mapActions([
+            "fetchEntityList"
+        ]),
+    },
+    computed: {
+        ...mapState([
+            "entityList"
+        ])
     },
 
     beforeMount: function(){
-        this.download();
+        this.fetchEntityList();
     },
     
 };
