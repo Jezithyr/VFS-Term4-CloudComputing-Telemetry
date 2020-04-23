@@ -72,8 +72,8 @@ export default {
                     data: yData
                 },
                 visualMap: {
-                    min: 0,
-                    max: 9,
+                    min: min,
+                    max: max,
                     calculable: true,
                     realtime: false,
                     inRange: {
