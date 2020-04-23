@@ -34,13 +34,15 @@ export default {
             let xData = [];
             let yData = [];
             let data = [];
-            for (var i = 0; i <= 10; i++) {
-                for (var j = 0; j <= 100; j++) {
-                    data.push([i, j, Math.sin(i/j)/2 + 0.5]);
+            let width = 10;
+            let height = 10;
+            for (var i = 0; i <= width; i++) {
+                for (var j = 0; j <= height; j++) {
+                    data.push([i, j, Math.sin(i)/width*2 + 0.3 + j/height/2]);
                 }
                 xData.push(i);
             }
-            for (var j = 0; j < 10; j++) {
+            for (var j = 0; j < height; j++) {
                 yData.push(j);
             }
 
