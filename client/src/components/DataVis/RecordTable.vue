@@ -9,6 +9,9 @@
         <div v-if="isFetchingData == true">
             loading...
         </div>
+        <div v-else-if="entityList.length <= 0">
+            No data to show
+        </div>
         <table v-else>
             <thead>
                 <th v-for="(format, key, j) in entityFormat" :key="j">
@@ -43,7 +46,7 @@ export default {
             "entityFormat"
         ]),
         filteredEntityList: function (){
-            
+
             // makes a copy of the list and sorts it
             return [...this.entityList].sort((a, b) => {
                 if(a.date < b.date) return 1;
